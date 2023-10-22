@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Medinose</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
+        <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
+
+
+        <script>
+            $(document).ready(function() {
+                $('#symptoms').select2({
+                placeholder: "Select symptoms",
+                width: 'resolve'
+            });
+        });
+        </script>
+        
+        <style>
+            body,
+            h1,
+            h2,
+            h3,
+            h4,
+            h5,
+            h6 {
+                font-family: "Lato", sans-serif;
+            }
+
+            .custom-select-wrapper {
+                width: 150px; /* Adjust the width as needed */
+                position: fixed;
+                overflow: scroll;
+            }
+
+
+            .custom-select {
+                width: 150px; /* Adjust the width as needed */
+                height: auto;
+                padding: 8px;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                background-color: #fff;
+                font-size: 14px;
+                overflow-y: scroll; /* Enable vertical scrollbar if needed */
+            }
+
+            #ml-diagnosis {
+                text-align: center; /* centering the content */
+                margin-top: 20px;   /* giving some space above it */
+            }
+
+            body, html {
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }   
+
+
+            .w3-content {
+                margin: 0 auto;
+                max-width: 1350px; /* Adjust this value as needed */
+            }
+
+            /* Create a Parallax Effect */
+            .bgimg-1 {
+                background-attachment: fixed;
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: cover;
+            }
+
+            .bgimg-2,
+            .bgimg-3 {
+                background-attachment: scroll;
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: cover;
+            }
+
+            .w3-top .w3-bar {
+                background-color: white;
+            }
+
+            #diagnose-container {
+                display: flex; /* This will turn it into a flex container */
+                justify-content: center; /* This will center the children horizontally */
+                flex-wrap: wrap; /* This will allow child elements to wrap if needed */
+            }
+            
+            #symptoms-list-left, #symptoms-list-right {
+                flex: 1; /* This will allow them to grow */
+                margin: 0 20px; /* Some space between them and the form */
+            }
+            
+            #diagnose-form {
+                flex: 2; /* This will allow the form to take up more space than the symptom lists */
+                text-align: center; /* Center the content of the form */
+                display: flex; /* Make it a flex container */
+                justify-content: center; /* Center its children horizontally */
+                align-items: center; /* Center its children vertically */
+                flex-direction: column; /* Stack its children vertically */
+            }
+            /* First image (Logo. Full height) */
+            .bgimg-1 {
+                background-image: url('https://cdn.discordapp.com/attachments/1129143164410794107/1138985405933420624/Screenshot_2023-08-09_at_7.59.42_PM.png');
+                min-height: 100%;
+            }
+
+            /* Second image (Portfolio) */
+            .bgimg-2 {
+                background-image: url("https://media.istockphoto.com/id/1200303860/video/self-drawing-heartbeat-line.jpg?s=640x640&k=20&c=F0sIukNlMmqh6PJr7OISayot9JIdZ_rEXQQAZ7Xh0q8=");
+                min-height: 400px;
+            }
+
+            /* Third image (Contact) */
+            .bgimg-3 {
+                background-image: url("https://st.depositphotos.com/1265075/3330/i/600/depositphotos_33303185-stock-photo-contact-us-web-icons-on.jpg");
+                min-height: 400px;
+            }
+
+            .w3-wide {
+                letter-spacing: 10px;
+            }
+
+            .w3-hover-opacity {
+                cursor: pointer;
+            }
+
+            /* Turn off parallax scrolling for tablets and phones */
+            @media only screen and (max-device-width: 1600px) {
+
+                .bgimg-1,
+                .bgimg-2,
+                .bgimg-3 {
+                    background-attachment: scroll;
+                    min-height: 400px;
+                }
+            }
+        </style>
+    </head>
+<body>
+
+    <script id="ratufa_loader" src="https://www.ratufa.io/c/ld.js?i=my_form_one&f=gtlfrmxj&n=n1.ratufa.io"></script>
+
+    <!-- Navbar (sit on top) -->
+    <div class="w3-top">
+        <div class="w3-bar" id="myNavbar">
+            <a class="w3-bar-item w3-button w3-hover-black w3-hide-medium w3-hide-large w3-right"
+                href="javascript:void(0);" onclick="toggleFunction()" title="Toggle Navigation Menu">
+                <i class="fa fa-bars"></i>
+            </a>
+            <a href="#home" class="w3-bar-item w3-button">HOME</a>
+            <a href="#about" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-user"></i> ABOUT</a>
+            <a href="#diagnose" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-th"></i> DIAGNOSE</a>
+            <a href="#contact" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-envelope"></i> CONTACT</a>
+            <a href="#" class="w3-bar-item w3-button w3-hide-small w3-right w3-hover-red">
+                <i class="fa fa-search"></i>
+            </a>
+        </div>
+
+        <!-- Navbar on small screens -->
+        <div id="navDemo" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium">
+            <a href="#about" class="w3-bar-item w3-button" onclick="toggleFunction()">ABOUT</a>
+            <a href="#diagnose" class="w3-bar-item w3-button" onclick="toggleFunction()">DIAGNOSE</a>
+            <a href="#contact" class="w3-bar-item w3-button" onclick="toggleFunction()">CONTACT</a>
+            <a href="#" class="w3-bar-item w3-button">SEARCH</a>
+        </div>
+    </div>
+
+    <!-- First Parallax Image with Logo Text -->
+    <div class="bgimg-1 w3-display-container w3-opacity-min" id="home">
+        <!-- <div class="w3-display-middle" style="white-space:nowrap;">
+            <span class="w3-center w3-padding-large w3-dark-gray w3-xlarge w3-wide w3-animate-opacity">MEDINOSE </span>
+        </div> -->
+    </div>
+
+    <!-- Container (About Section) -->
+    <div class="w3-content w3-container w3-padding-64" id="about">
+        <h3 class="w3-center">ABOUT US</h3>
+        <p class="w3-center"><em>MediNose - Your personal diagnosis</em></p>
+        <p style="font-family: Arial, sans-serif; font-size: 22px; line-height: 1.5;" class="w3-center">At Medinose, we harness machine learning to reshape healthcare access. Our goal is to offer precise medical diagnoses globally, guiding individuals to make educated health choices. Our platform empowers users to actively manage their well-being for a healthier life.</p>
+        <div class="w3-row">
+            <div class="w3-col m6 w3-center w3-padding-large">
+                <p><b><i class="fa fa-user w3-margin-right"></i>Samuel Kim, CEO</b></p><br>
+                <img src="https://cdn.discordapp.com/attachments/1162163696466931772/1163653732353966130/cool.JPEG?ex=65405bfd&is=652de6fd&hm=81e9b035f60d571a6313053a32293bd6f096d885fb37c11a2cbe636e3ca69fb8&" class="w3-round w3-image w3-opacity w3-hover-opacity-off" alt="Photo of Me"
+                    width="500" height="333">
+            </div>
+
+            <!-- Hide this text on small devices -->
+            <div class="w3-col m6 w3-hide-small w3-padding-large">
+                <p style = "font-size: 18px">Welcome to MediNose, your one-stop destination for reliable symptom analysis and disease prediction. Our cutting-edge machine learning model boasts an impressive accuracy rate of 94%, ensuring that you receive accurate insights into your health concerns. Gone are the days of sifting through endless search results and unreliable online information. With MediNose, you have a free and trustworthy solution right at your fingertips. Unlike generic online searches, our model is specifically trained to interpret a multitude of symptoms, offering personalized results that cater to your unique health profile. Say goodbye to the confusion of web searches and embrace the precision and efficiency of MediNose. Your health deserves the best, and with MediNose, you're empowered with accurate, affordable, and superior symptom analysis.</p>
+            </div>
+        
+    </div>
+
+    <div class="w3-row w3-center w3-dark-grey w3-padding-64">
+        <div class="w3-third w3-section">
+            <span class="w3-xlarge">94%+</span><br>
+            Accuracy
+        </div>
+        <div class="w3-third w3-section">
+            <span class="w3-xlarge">99+</span><br>
+            Happy Clients
+        </div>
+        <div class="w3-third w3-section">
+            <span class="w3-xlarge">120+</span><br>
+            Cases Detected Correctly
+        </div>
+    </div>
+
+    <!-- Second Parallax Image with Portfolio Text -->
+    <div class="bgimg-2 w3-display-container w3-opacity-min">
+        <div class="w3-display-middle">
+            <span class="w3-xxlarge w3-hover-text-black w3-wide">DIAGNOSE</span>
+        </div>
+    </div>
+
+    <script>
+        // Initialize Select2 on the multi-select element
+        $(document).ready(function() {
+            $('#symptoms').select2();
+        });
+    </script>
+
+    <!-- Container (Portfolio Section) -->
+    <div class="w3-content w3-container w3-padding-64" id="diagnose-container">
+        
+        
+        
+        <div id = "diagnose-form">
+            <div id="ml-diagnosis">
+                <h3 class="w3-center">Machine Learning Diagnosis</h3> 
+                <a href="https://docs.google.com/document/d/11t9GQGmwmVGbTNqwxbqDTX96dFMP4RT66rPa3Wg05ZA/edit?usp=sharing" target="_blank">
+                    <h6 class="w3-center">Symptom List</h6>
+                </a>
+            </div>
+
+            <form action="/check_symptoms" method="post">
+                <label for="age">Age: </label>
+                <input type="text" id="age" name="age" style="height: 22px; width: 100px"> <!-- Adjust the width as needed -->
+                <br>
+                <label for="gender">Gender: </label>
+                <select id="gender" name="gender" style="width: 100px;"> <!-- Adjust the width as needed -->
+                    <option value="0">Male</option> 
+                    <option value="1">Female</option>
+                    <option value="2">Other</option>
+                </select>
+                <br>
+                <label for="martial_stat">Marital Status: </label>
+                <select id="martial_stat" name="martial_stat" style="width: 100px;"> <!-- Adjust the width as needed -->
+                    <option value="0">Married</option>
+                    <option value="1">Divorced</option>
+                    <option value="2">Not Married</option>
+                </select>
+                <br>
+                <label for="symptoms">Symptoms(s): Choose from 2 to 17! </label>
+                <p>The more symptoms, the more accurate</h6>
+                <br>
+
+                <select id = "symptoms" name="symptoms" multiple="multiple">
+                    <option value="abdominal_pain">Abdominal Pain</option>
+                    <option value="abnormal_menstruation">Abnormal Menstruation</option>
+                    <option value="acidity">Acidity</option>
+                    <option value="acute_liver_failure">Acute Liver Failure</option>
+                    <option value="altered_sensorium">Altered Sensorium</option>
+                    <option value="anxiety">Anxiety</option>
+                    <option value="back_pain">Back Pain</option>
+                    <option value="belly_pain">Belly Pain</option>
+                    <option value="blackheads">Blackheads</option>
+                    <option value="blister">Blister</option>
+                    <option value="blood_in_sputum">Blood in Sputum</option>
+                    <option value="bloody_stool">Bloody Stool</option>
+                    <option value="blurred_and_distorted_vision">Blurred and Distorted Vision</option>
+                    <option value="breathlessness">Breathlessness</option>
+                    <option value="brittle_nails">Brittle Nails</option>
+                    <option value="burning_micturition">Burning Micturition</option>
+                    <option value="chest_pain">Chest Pain</option>
+                    <option value="chills">Chills</option>
+                    <option value="cold_hands_and_feet">Cold Hands and Feet</option>
+                    <option value="coma">Coma</option>
+                    <option value="congestion">Congestion</option>
+                    <option value="constipation">Constipation</option>
+                    <option value="continuous_feel_of_urine">Continuous Feel of Urine</option>
+                    <option value="continuous_sneezing">Continuous Sneezing</option>
+                    <option value="cough">Cough</option>
+                    <option value="cramps">Cramps</option>
+                    <option value="dark_urine">Dark Urine</option>
+                    <option value="dehydration">Dehydration</option>
+                    <option value="depression">Depression</option>
+                    <option value="diarrhoea">Diarrhoea</option>
+                    <option value="dischromic_patches">Dischromic Patches</option>
+                    <option value="distention_of_abdomen">Distention of Abdomen</option>
+                    <option value="dizziness">Dizziness</option>
+                    <option value="drying_and_tingling_lips">Drying and Tingling Lips</option>
+                    <option value="enlarged_thyroid">Enlarged Thyroid</option>
+                    <option value="excessive_hunger">Excessive Hunger</option>
+                    <option value="extra_marital_contacts">Extra Marital Contacts</option>
+                    <option value="family_history">Family History</option>
+                    <option value="fast_heart_rate">Fast Heart Rate</option>
+                    <option value="fatigue">Fatigue</option>
+                    <option value="fluid_overload">Fluid Overload</option>
+                    <option value="foul_smell_of_urine">Foul Smell of Urine</option>
+                    <option value="headache">Headache</option>
+                    <option value="high_fever">High Fever</option>
+                    <option value="hip_joint_pain">Hip Joint Pain</option>
+                    <option value="history_of_alcohol_consumption">History of Alcohol Consumption</option>
+                    <option value="indigestion">Indigestion</option>
+                    <option value="inflammatory_nails">Inflammatory Nails</option>
+                    <option value="internal_itching">Internal Itching</option>
+                    <option value="irregular_sugar_level">Irregular Sugar Level</option>
+                    <option value="irritability">Irritability</option>
+                    <option value="irritation_in_anus">Irritation in Anus</option>
+                    <option value="itching">Itching</option>
+                    <option value="joint_pain">Joint Pain</option>
+                    <option value="knee_pain">Knee Pain</option>
+                    <option value="lack_of_concentration">Lack of Concentration</option>
+                    <option value="lethargy">Lethargy</option>
+                    <option value="loss_of_appetite">Loss of Appetite</option>
+                    <option value="loss_of_balance">Loss of Balance</option>
+                    <option value="loss_of_smell">Loss of Smell</option>
+                    <option value="malaise">Malaise</option>
+                    <option value="mild_fever">Mild Fever</option>
+                    <option value="mood_swings">Mood Swings</option>
+                    <option value="movement_stiffness">Movement Stiffness</option>
+                    <option value="muscle_pain">Muscle Pain</option>
+                    <option value="muscle_wasting">Muscle Wasting</option>
+                    <option value="muscle_weakness">Muscle Weakness</option>
+                    <option value="mucoid_sputum">Mucoid Sputum</option>
+                    <option value="nausea">Nausea</option>
+                    <option value="neck_pain">Neck Pain</option>
+                    <option value="nodal_skin_eruptions">Nodal Skin Eruptions</option>
+                    <option value="obesity">Obesity</option>
+                    <option value="pain_behind_the_eyes">Pain Behind the Eyes</option>
+                    <option value="pain_during_bowel_movements">Pain During Bowel Movements</option>
+                    <option value="pain_in_anal_region">Pain in Anal Region</option>
+                    <option value="palpitations">Palpitations</option>
+                    <option value="patches_in_throat">Patches in Throat</option>
+                    <option value="phlegm">Phlegm</option>
+                    <option value="polyuria">Polyuria</option>
+                    <option value="prominent_veins_on_calf">Prominent Veins on Calf</option>
+                    <option value="prognosis">Prognosis</option>
+                    <option value="pus_filled_pimples">Pus Filled Pimples</option>
+                    <option value="red_sore_around_nose">Red Sore Around Nose</option>
+                    <option value="red_spots_over_body">Red Spots Over Body</option>
+                    <option value="redness_of_eyes">Redness of Eyes</option>
+                    <option value="restlessness">Restlessness</option>
+                    <option value="receiving_blood_transfusion">Receiving Blood Transfusion</option>
+                    <option value="receiving_unsterile_injections">Receiving Unsterile Injections</option>
+                    <option value="runny_nose">Runny Nose</option>
+                    <option value="rusty_sputum">Rusty Sputum</option>
+                    <option value="shivering">Shivering</option>
+                    <option value="silver_like_dusting">Silver Like Dusting</option>
+                    <option value="sinus_pressure">Sinus Pressure</option>
+                    <option value="skin_peeling">Skin Peeling</option>
+                    <option value="skin_rash">Skin Rash</option>
+                    <option value="slurred_speech">Slurred Speech</option>
+                    <option value="small_dents_in_nails">Small Dents in Nails</option>
+                    <option value="spinning_movements">Spinning Movements</option>
+                    <option value="spotting_urination">Spotting Urination</option>
+                    <option value="stiff_neck">Stiff Neck</option>
+                    <option value="stomach_bleeding">Stomach Bleeding</option>
+                    <option value="stomach_pain">Stomach Pain</option>
+                    <option value="sweating">Sweating</option>
+                    <option value="swelled_lymph_nodes">Swelled Lymph Nodes</option>
+                    <option value="swelling_joints">Swelling Joints</option>
+                    <option value="swelling_of_stomach">Swelling of Stomach</option>
+                    <option value="swollen_blood_vessels">Swollen Blood Vessels</option>
+                    <option value="swollen_extremeties">Swollen Extremeties</option>
+                    <option value="swollen_legs">Swollen Legs</option>
+                    <option value="throat_irritation">Throat Irritation</option>
+                    <option value="toxic_look_(typhos)">Toxic Look (Typhos)</option>
+                    <option value="ulcers_on_tongue">Ulcers on Tongue</option>
+                    <option value="unsteadiness">Unsteadiness</option>
+                    <option value="visual_disturbances">Visual Disturbances</option>
+                    <option value="vomiting">Vomiting</option>
+                    <option value="watering_from_eyes">Watering from Eyes</option>
+                    <option value="weakness_in_limbs">Weakness in Limbs</option>
+                    <option value="weakness_of_one_body_side">Weakness of One Body Side</option>
+                    <option value="weight_gain">Weight Gain</option>
+                    <option value="weight_loss">Weight Loss</option>
+                    <option value="yellow_crust_ooze">Yellow Crust Ooze</option>
+                    <option value="yellow_urine">Yellow Urine</option>
+                    <option value="yellowing_of_eyes">Yellowing of Eyes</option>
+                    <option value="yellowish_skin">Yellowish Skin</option>                    
+                </select>
+                <input type="submit" value="Submit">
+            </form> 
+            </div>
+            
+            
+              
+    </div>
+
+
+    <!-- Modal for full size images on click-->
+    <div id="modal01" class="w3-modal w3-black" onclick="this.style.display='none'">
+        <span class="w3-button w3-large w3-black w3-display-topright" title="Close Modal Image"><i
+                class="fa fa-remove"></i></span>
+        <div class="w3-modal-content w3-animate-zoom w3-center w3-transparent w3-padding-64">
+            <img id="img01" class="w3-image">
+            <p id="caption" class="w3-opacity w3-large"></p>
+        </div>
+    </div>
+
+    <!-- Third Parallax Image with Portfolio Text -->
+    <div class="bgimg-3 w3-display-container w3-opacity-min">
+        <div class="w3-display-middle">
+            <span class="w3-xxlarge w3-hover-text-gray w3-wide">CONTACT</span>
+        </div>
+    </div>
+
+    <!-- Container (Contact Section) -->
+    <div class="w3-content w3-container w3-padding-64" id="contact">
+        <h3 class="w3-center">Where is MediNose</h3>
+        <p class="w3-center"><em>I'd love your feedback!</em></p>
+
+        <div class="w3-row w3-padding-32 w3-section">
+            <div class="w3-col m4 w3-container">
+                <img src="data:image/jpeg;base64,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" class="w3-image w3-round" style="width:100%">
+            </div>
+            <div class="w3-col m8 w3-panel">
+                <div class="w3-large w3-margin-bottom">
+                    <i class="fa fa-map-marker fa-fw w3-hover-text-black w3-xlarge w3-margin-right"></i> Solon, OH<br>
+                    <i class="fa fa-phone fa-fw w3-hover-text-black w3-xlarge w3-margin-right"></i> Phone: 440-318-9618<br>
+                    <i class="fa fa-envelope fa-fw w3-hover-text-black w3-xlarge w3-margin-right"></i> Email:
+                    samuelkim0617@gmail.com<br>
+                </div>
+                <form id="my_form_one" target="_blank">
+                    <div class="w3-row-padding" style="margin:0 -16px 8px -16px">
+                        <div class="w3-half">
+                            <input class="w3-input w3-border" type="text" placeholder="Name" required name="Name">
+                        </div>
+                        <div class="w3-half">
+                            <input class="w3-input w3-border" type="text" placeholder="Email" required name="Email">
+                        </div>
+                    </div>
+                    <input class="w3-input w3-border" type="text" placeholder="Message" required name="Message">
+                    <button class="w3-button w3-black w3-right w3-section" type="submit">
+                        <i class="fa fa-paper-plane"></i> SEND MESSAGE
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer. This section contains an ad for W3Schools Spaces. You can leave it to support us. -->
+    <footer class="w3-center w3-black w3-padding-64 w3-opacity w3-hover-opacity-off">
+        <a href="#home" class="w3-button w3-light-grey"><i class="fa fa-arrow-up w3-margin-right"></i>To the top</a>
+        <div class="w3-xlarge w3-section">
+            <p style="font-family: Arial, sans-serif; font-size: 16px; line-height: 1.5;"> View the code here: </p>
+    <!-- Footer end. -->
+    </footer>
+
+    <script>
+        // Modal Image Gallery
+        function onClick(element) {
+            document.getElementById("img01").src = element.src;
+            document.getElementById("modal01").style.display = "block";
+            var captionText = document.getElementById("caption");
+            captionText.innerHTML = element.alt;
+        }
+
+        // Change style of navbar on scroll
+        window.onscroll = function () { myFunction() };
+        function myFunction() {
+            var navbar = document.getElementById("myNavbar");
+            if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+                navbar.className = "w3-bar" + " w3-card" + " w3-animate-top" + " w3-white";
+            } else {
+                navbar.className = navbar.className.replace(" w3-card w3-animate-top w3-white", "");
+            }
+        }
+
+        // Used to toggle the menu on small screens when clicking on the menu button
+        function toggleFunction() {
+            var x = document.getElementById("navDemo");
+            if (x.className.indexOf("w3-show") == -1) {
+                x.className += " w3-show";
+            } else {
+                x.className = x.className.replace(" w3-show", "");
+            }
+        }
+        
+       
+        
+
+
+
+        
+    </script>
+
+</body>
+
+</html>
