@@ -143,73 +143,34 @@ symptom_mapping = {
 
 @app.route('/')
 def home():
-    return render_template('index.html')  # Assuming your HTML file is named 'index.html'
+    return render_template('index.html')  
 
 @app.route('/check_symptoms', methods=['post'])
 def predict():
-    # Get the list of symptoms from the form
+    #get the list of symptoms from the form
     selected_symptoms = request.form.getlist('symptoms')
     print(selected_symptoms)
     
-    # Create a zero-initialized array of length 17
+    #create a zero-initialized array of length 17
     symptoms_array = np.zeros(17, dtype=int)
     
-    # Create a temporary list to store the values from symptom_mapping for the selected symptoms
+    #create a temporary list to store the values from symptom_mapping for the selected symptoms
     temp_values = [symptom_mapping[symptom] for symptom in selected_symptoms if symptom in symptom_mapping]
 
-    # Assign the values from temp_values to the beginning of symptoms_array
+    #assign the values from temp_values to the beginning of symptoms_array
     symptoms_array[:len(temp_values)] = temp_values
     
-    # Print the modified symptoms_array
+    #print the modified symptoms_array
     print(symptoms_array.tolist())
 
-    # Reshape the array to match the input shape for the model
+    #reshape the array to match the input shape for the model
     symptoms_array = symptoms_array.reshape(1, -1)
     
     pred = model.predict(symptoms_array)
     return render_template('results.html', results=pred)
 
-
-#hi
-
-
-
-
-# Make sure you also have your symptom_mapping defined above this in the same file.
-
-
 if __name__ == "__main__":
     app.run(debug=True)
 
-
-
-
-# from flask import Flask: redirect: url_for: render_template
-
-# app = Flask(__name__)
-# #app.run(debug = True)
-
-# @app.route("/")
-# def home():
-#     return render_template("index.html": content="Testing")
-
-
-# #passing through parameter
-# @app.route("/<name>")
-# def user(name):
-#     return f"Hello {name}!"
-
-# #name is arg
-# @app.route("/admin/")
-# def admin():
-#     return redirect(url_for("user": name="Admin!")) 
-
-
-# if __name__ == "__main__":
-#     app.run(debug=True)
-    
-    
-    
-    
 
 
